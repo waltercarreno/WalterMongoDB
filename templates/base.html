@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://kit.fontawesome.com/7869aa5e84.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    <title>Home</title>
+</head>
+<body>
+  <header>
+      <nav class="nav-extended text-shadow green lighten-1">
+        <div class="nav-wrapper">
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          {% if 'username' not in session %}
+          <ul class="right hide-on-med-and-down manage-margin">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('login') }}">Log In</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
+          </ul>
+          {% else %}
+          <ul class="right hide-on-med-and-down manage-margin">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('profile', username=session['username']) }}">Profile</a></li>
+            <li><a href="{{ url_for('addrecipe') }}">New Task</a></li>
+            <li><a href="{{ url_for('allrecipes') }}">All recipies</a></li>
+            <li><a href="{{url_for('logout')}}">Log Out</a></li>
+          </ul>
+          {% endif %}
+
+        </div>
+      </nav>
+      {% if 'username' not in session %}
+      <ul class="sidenav" id="mobile-demo">
+        <li><h4 class="center-align light-blue-text text-darken 4">Recipes</h4></li>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('login') }}">Log In</a></li>
+        <li><a href="{{ url_for('register') }}">Register</a></li>
+      </ul>
+      {% else %}
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('profile', username=session['username']) }}">Profile</a></li>
+        <li><a href="{{ url_for('addrecipe') }}">New Task</a></li>
+        <li><a href="{{ url_for('allrecipes') }}">All recipies</a></li>
+        <li><a href="{{url_for('logout')}}">Log Out</a></li>
+      </ul>
+      {% endif %}
+  </header>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+<footer>
+  <div class="footer-main">
+  <div class="container">
+  <div class="row">
+  <div class="col-md-6 col-sm-6 col-xs-12 segment-two">
+  <h3>Follow our social media </h3>
+  <a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+  <a target="_blank" href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
+  <a target="_blank" href="https://www.youtube.com/"><i class="fa fa-youtube"></i></a>
+  </div>
+  </div>
+  </div>
+  </div>
+  </footer>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</html>
