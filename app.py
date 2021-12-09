@@ -4,7 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from flask_paginate import Pagination
-from objectid import ObjectId
+from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from forms import RegisterForm, LoginForm, RecipeForm, EditRecipeForm, DeleteForm
 if os.path.exists("env.py"):
