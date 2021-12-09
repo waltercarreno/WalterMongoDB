@@ -1,0 +1,8 @@
+bson==0.5.10
+click==8.0.3
+Flask==2.0.2
+flask-paginate==2021.10.29
+Flask-PyMongo==2.3.0
+itsdangerous==2.0.1
+pymongo==4.0.1
+Werkzeug==2.0.2
