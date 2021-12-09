@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="lower-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 ">
+                <h2 class=" text-center">Add Task</h2>
+                <form action="" method="POST">
+                    {{ form.hidden_tag() }}
+
+                    <div class="form-group">
+                        {{ form.recipe_name.label(class="form-control-label") }}
+                        {{ form.recipe_name(class="form-control", placeholder="Recipe name", required=True) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.description.label(class="form-control-label") }}
+                        {{ form.description(class="form-control", placeholder="Description", required=True) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.ingredients.label(class="form-control-label") }}
+                        {{ form.ingredients(class="form-control", placeholder="Ingredients",  required=True) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.cooking_time.label(class="form-control-label") }}
+                        {{ form.cooking_time(class="form-control", required=True) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.calories.label(class="form-control-label") }}
+                        {{ form.calories(class="form-control", required=False) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.recipe_image.label(class="form-control-label") }}
+                        {{ form.recipe_image(class="form-control", required=False) }}
+                    </div>
+                    <div class="form-group text-center">
+                        {{ form.submit(class="btn btn-primary custom-form-btn") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section>
+    <br>
+    <br>
+    <div class="row">
+        <!--beginning of col 7-->
+        <div class="col m7 reciperslt">
+            <h3>{{ recipe.recipe_name }}</h3>
+            <div>
+                <p class="section recipe-description">{{ recipe.description }}</p>
+            </div>
+            <hr class="hr">
+            <div class="row section recipe-icons">
+                <div class="col-sm-4">
+                    <span class="fas fa-clock fa-2x"></span>
+                    <p class="clear">{{ recipe.cooking_time }} Min</p>
+                </div>
+                <div class="col-sm-4">
+                    <span class="fas fa-fire fa-2x"></span>
+                    <p class="clear">{{ recipe.calories }} Calories</p>
+                </div>
+            </div>
+            <hr class="hr">
+            <div class="section">
+                <h4 class="left-align ingredients-section">Ingredients</h4>
+                <p class="section recipe-ingredients" style="white-space: pre-wrap;">{% for ingredients in recipe.ingredients %} {{ ingredients }} {% endfor %}</p>
+            </div>
+            <br>
+            <hr class="hr">
+        </div>
+        
+        <div class="col m5 img-container section">
+            <img class="reciperesultimg" src="{{ recipe.recipe_image }}">
+            <br>
+            <br>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

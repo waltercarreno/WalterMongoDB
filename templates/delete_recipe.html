@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<section>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col m7 reciperslt">
+            <h3>{{ recipe.recipe_name }}</h3>
+            <div>
+                <p class="section recipe-description">{{ recipe.description }}</p>
+            </div>
+            <hr class="hr">
+            <div class="row section recipe-icons">
+                <div class="col-sm-4">
+                    <span class="fas fa-clock fa-2x"></span>
+                    <p class="clear">{{ recipe.cooking_time }} Min</p>
+                </div>
+                <div class="col-sm-4">
+                    <span class="fas fa-fire fa-2x"></span>
+                    <p class="clear">{{ recipe.calories }} Calories</p>
+                </div>
+            </div>
+            <hr class="hr">
+            <div class="section">
+                <h4 class="left-align ingredients-section">Ingredients</h4>
+                <p class="section recipe-ingredients" style="white-space: pre-wrap;">{% for ingredients in recipe.ingredients %} {{ ingredients }} {% endfor %}</p>
+            </div>
+            <br>
+            <hr class="hr">
+        </div>
+        
+        <div class="col m5 img-container section">
+            <img class="recipeimage" src="{{ recipe.recipe_image }}">
+            <br>
+            <br>
+        </div>
+    </div>
+</section>
+
+<div class="col-sm-12 custom-form">
+    <h5 class=" text-center">Confirm username to delete</h5>
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group delete">
+            {{ form.username(class="form-control", placeholder="Confirm username to delete", required=true) }}
+        </div>
+        <div class="form-group text-center">
+            {{ form.submit(class="btn btn-danger custom-form-btn") }}
+        </div>
+    </form>
+</div>
+
+{% endblock %}
