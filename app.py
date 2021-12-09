@@ -12,13 +12,12 @@ if os.path.exists("env.py"):
 
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
+
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
-# Secret Key value generated via secrets python module.
-app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
-bcrypt = Bcrypt(app)
 
 def get_recipes(offset=0, per_page=5):
     return mongo.db.recipes.find()[offset: offset + per_page]
